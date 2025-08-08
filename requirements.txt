@@ -5,7 +5,7 @@ requests
 streamlit
 langchain
 openai
-fitz
+pymupdf
 langchain-openai
 pydantic
 langchain-community
