@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import logging
 import os
 from models import SummaryResponse, QuestionsResponse
-import fitz  # PyMuPDF
+import pymupdf
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -39,7 +39,7 @@ def extract_text_with_pymupdf(file, filename: str) -> str:
         file.seek(0)
         if filename.lower().endswith('.pdf'):
             pdf_bytes = file.read()
-            pdf_document = fitz.open(stream=pdf_bytes, filetype="pdf")
+            pdf_document = pymupdf.open(stream=pdf_bytes, filetype="pdf")
             text_content = [pdf_document[page_num].get_text() for page_num in range(pdf_document.page_count)]
             pdf_document.close()
             return "\n".join(text_content)
