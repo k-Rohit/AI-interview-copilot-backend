@@ -9,3 +9,4 @@ pymupdf
 langchain-openai
 pydantic
 langchain-community
+python-multipart
