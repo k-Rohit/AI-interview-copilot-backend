@@ -4,12 +4,6 @@ from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
 import os 
 
-# load_dotenv()
-
-# api_key = os.getenv("OPENAI_API_KEY")
-# if not api_key:
-#     raise Exception("OPENAI_API_KEY not found in environment variables")
-
 def generate_questions_chain(api_key: str | None = None):
     """
     Creates a LangChain for generating tailored interview questions for ANY role/industry
@@ -82,25 +76,7 @@ Analyze the job description and candidate's resume and the interview type carefu
 
 **OUTPUT FORMAT:**
 Provide your response in the following structured format:
-
-## Interview Questions for {interview_type} Interview
-
-**Question Categories:**
-
-### Opening Questions (2-3 questions)
-[Warm-up questions to make candidate comfortable]
-
-### Core Competency Questions (5-7 questions)
-[Main questions targeting key skills and experiences]
-
-### Scenario-Based Questions (3-4 questions)
-[Situational or hypothetical questions]
-
-### Advanced/Deep-Dive Questions (2-3 questions)
-[Complex questions for experienced candidates]
-
-### Closing Questions (1-2 questions)
-[Questions about candidate's interest and next steps]
+Give top 5-10 questions for the interview type specified, only questions, no explanations or additional text.
 
 **Additional Recommendations:**
 [Any specific advice for conducting this interview based on the candidate's profile]
@@ -132,7 +108,7 @@ Remember to:
     chain = LLMChain(
         llm=llm,
         prompt=prompt,
-        verbose=True  # Set to False in production
+        verbose=True
     )
     
     return chain
