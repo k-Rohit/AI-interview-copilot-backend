@@ -6,11 +6,6 @@ from dotenv import load_dotenv
 import os 
 import json
 
-load_dotenv()
-
-# api_key = os.getenv("OPENAI_API_KEY")
-# if not api_key:
-#     raise Exception("OPENAI_API_KEY not found in environment variables")
 
 def generate_summary_chain(api_key: str | None = None):
     """
