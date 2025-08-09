@@ -9,8 +9,8 @@ import pymupdf
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-from question_generator import generate_questions_chain
-from summary_generator import generate_summary_chain
+from chains.question_generator import generate_questions_chain
+from chains.summary_generator import generate_summary_chain
 
 app = FastAPI(
     title="AI Interview Assistant",
